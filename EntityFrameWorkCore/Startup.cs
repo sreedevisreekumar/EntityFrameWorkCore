@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EntityFrameWorkCore.Data;
+using EntityFrameWorkCore.Data.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,9 +30,11 @@ namespace EntityFrameWorkCore
         {
             //Add applicationDbContext to dependency injection
             services.AddDbContextPool<ApplicationDbContext>(options =>
-            options.UseSqlServer("Server=.;Database=EntityFrameworkCore;Trusted_Connection=True;MultipleActiveResultSets=true"));
+            options.UseSqlServer(Configuration.GetConnectionString("AppDBConnection")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddScoped<ISettingsRepository, SqlSettingsRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
