@@ -3,14 +3,16 @@ using EntityFrameWorkCore.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EntityFrameWorkCore.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190826175419_SeedSettingsTable")]
+    partial class SeedSettingsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,13 +38,7 @@ namespace EntityFrameWorkCore.Data.Migrations
                         {
                             Id = "1",
                             Name = "back-ground-color",
-                            Value = "green"
-                        },
-                        new
-                        {
-                            Id = "2",
-                            Name = "border",
-                            Value = "solid 1px black"
+                            Value = "red"
                         });
                 });
 #pragma warning restore 612, 618

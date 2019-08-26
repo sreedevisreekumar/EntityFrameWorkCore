@@ -22,7 +22,25 @@ namespace EntityFrameWorkCore.Data
         //Representation of table
         public DbSet<SettingsModel> Settings { get; set; }
 
-        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<SettingsModel>().HasData(
+                new SettingsModel
+                {
+                    Id = "1",
+                    Name = "back-ground-color",
+                    Value = "green"
+
+                },
+                 new SettingsModel
+                 {
+                     Id = "2",
+                     Name = "border",
+                     Value = "solid 1px black"
+
+                 }
+                );
+        }
 
     }
 }
